@@ -9,7 +9,7 @@ const User = () => {
   useEffect(() => {
     const fetchData = async () => {
       try {
-        const response = await axios.get("http://localhost:8000/api/users");
+        const response = await axios.get("https://fullstackbackend-r5n2.onrender.com/api/users");
         setUsers(response.data);
       } catch (error) {
         console.log("Error while fetching data");
@@ -21,7 +21,7 @@ const User = () => {
   const deleteUser = async (userId) => {
     try {
       const response = await axios.delete(
-        `http://localhost:8000/api/delete/user/${userId}`,
+        `https://fullstackbackend-r5n2.onrender.com/api/delete/user/${userId}`,
       );
       setUsers((prev) => prev.filter((user) => user._id !== userId));
       toast.success(response.data.message, { position: "top-right" });

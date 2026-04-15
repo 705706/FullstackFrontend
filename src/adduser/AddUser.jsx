@@ -23,7 +23,7 @@ const AddUser = () => {
   const submitForm = async (e) => {
     e.preventDefault();
     await axios
-      .post("http://localhost:8000/api/user", user)
+      .post("https://fullstackbackend-r5n2.onrender.com/api/user", user)
       .then((response) => {
         console.log("User Created Successfully");
         toast.success(response.data.message, { position: "top-right" });
@@ -33,10 +33,6 @@ const AddUser = () => {
         console.log(error);
       });
   };
-
-
-
-
 
   return (
     <div className="addUser">

@@ -23,7 +23,7 @@ const UpdateUser = () => {
 
   useEffect(() => {
     axios
-      .get(`http://localhost:8000/api/users/${id}`)
+      .get(`https://fullstackbackend-r5n2.onrender.com/api/users/${id}`)
       .then((response) => {
         setUser(response.data);
       })
@@ -35,7 +35,7 @@ const UpdateUser = () => {
   const submitForm = async (e) => {
     e.preventDefault();
     await axios
-      .put(`http://localhost:8000/api/user/${id}`, user)
+      .put(`https://fullstackbackend-r5n2.onrender.com/api/user/${id}`, user)
       .then((response) => {
         console.log("User Updated Successfully");
         toast.success(response.data.message, { position: "top-right" });
