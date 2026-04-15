@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import "./User.css";
-import axios from "axios";
+import api from "../api";
 import { Link } from "react-router-dom";
 import toast from "react-hot-toast";
 
@@ -9,7 +9,7 @@ const User = () => {
   useEffect(() => {
     const fetchData = async () => {
       try {
-        const response = await axios.get("https://fullstackbackend-r5n2.onrender.com/api/users");
+        const response = await api.get("/users");
         setUsers(response.data);
       } catch (error) {
         console.log("Error while fetching data");
@@ -20,9 +20,7 @@ const User = () => {
 
   const deleteUser = async (userId) => {
     try {
-      const response = await axios.delete(
-        `https://fullstackbackend-r5n2.onrender.com/api/delete/user/${userId}`,
-      );
+      const response = await api.delete(`/delete/user/${userId}`);
       setUsers((prev) => prev.filter((user) => user._id !== userId));
       toast.success(response.data.message, { position: "top-right" });
     } catch (error) {

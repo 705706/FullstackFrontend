@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import "./UpdateUser.css";
 import { Link, useNavigate, useParams } from "react-router-dom";
-import axios from "axios";
+import api from "../api";
 import toast from "react-hot-toast";
 
 const UpdateUser = () => {
@@ -22,8 +22,8 @@ const UpdateUser = () => {
   };
 
   useEffect(() => {
-    axios
-      .get(`https://fullstackbackend-r5n2.onrender.com/api/users/${id}`)
+    api
+      .get(`/users/${id}`)
       .then((response) => {
         setUser(response.data);
       })
@@ -34,8 +34,8 @@ const UpdateUser = () => {
 
   const submitForm = async (e) => {
     e.preventDefault();
-    await axios
-      .put(`https://fullstackbackend-r5n2.onrender.com/api/user/${id}`, user)
+    await api
+      .put(`/user/${id}`, user)
       .then((response) => {
         console.log("User Updated Successfully");
         toast.success(response.data.message, { position: "top-right" });

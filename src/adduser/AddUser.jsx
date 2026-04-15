@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import "./AddUser.css";
 import { Link, useNavigate } from "react-router-dom";
-import axios from "axios";
+import api from "../api";
 import toast from "react-hot-toast";
 
 const AddUser = () => {
@@ -22,8 +22,8 @@ const AddUser = () => {
 
   const submitForm = async (e) => {
     e.preventDefault();
-    await axios
-      .post("https://fullstackbackend-r5n2.onrender.com/api/user", user)
+    await api
+      .post("/user", user)
       .then((response) => {
         console.log("User Created Successfully");
         toast.success(response.data.message, { position: "top-right" });
