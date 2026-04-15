@@ -23,7 +23,7 @@ const AddUser = () => {
   const submitForm = async (e) => {
     e.preventDefault();
     await api
-      .post("/user", user)
+      .post("/api/user", user)
       .then((response) => {
         console.log("User Created Successfully");
         toast.success(response.data.message, { position: "top-right" });

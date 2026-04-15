@@ -9,7 +9,7 @@ const User = () => {
   useEffect(() => {
     const fetchData = async () => {
       try {
-        const response = await api.get("/users");
+        const response = await api.get("/api/users");
         setUsers(response.data);
       } catch (error) {
         console.log("Error while fetching data");
@@ -20,7 +20,7 @@ const User = () => {
 
   const deleteUser = async (userId) => {
     try {
-      const response = await api.delete(`/delete/user/${userId}`);
+      const response = await api.delete(`/api/delete/user/${userId}`);
       setUsers((prev) => prev.filter((user) => user._id !== userId));
       toast.success(response.data.message, { position: "top-right" });
     } catch (error) {

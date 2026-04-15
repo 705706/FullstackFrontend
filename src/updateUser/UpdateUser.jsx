@@ -23,7 +23,7 @@ const UpdateUser = () => {
 
   useEffect(() => {
     api
-      .get(`/users/${id}`)
+      .get(`/api/users/${id}`)
       .then((response) => {
         setUser(response.data);
       })
@@ -35,7 +35,7 @@ const UpdateUser = () => {
   const submitForm = async (e) => {
     e.preventDefault();
     await api
-      .put(`/user/${id}`, user)
+      .put(`/api/user/${id}`, user)
       .then((response) => {
         console.log("User Updated Successfully");
         toast.success(response.data.message, { position: "top-right" });
